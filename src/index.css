@@ -1,0 +1,58 @@
+*{
+    box-sizing: border-box;
+}
+body,html{
+    margin: 0;
+    padding:0;
+    background-image: url("/cover.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:100%;
+    background-attachment: fixed;
+}
+#homePageSection,#aboutPageSection,#contactPageSection,#locationPageSection,#galleryPageSection,#testimonialPageSection,#orderOnlineSection,#reservationPageSection{
+    color:whitesmoke;
+    background-color: rgba(23,47,18,0.7);
+}
+section p{
+    font-size:larger;
+}
+form label{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: larger;
+    color: yellow;
+}
+iframe{
+    height: 100%;
+    width:100%;
+    border: 0;
+    
+}
+
+.imageGallery{
+    display:grid;
+    grid-template-columns: auto auto auto;
+    padding:15px;
+    gap:35px;
+}
+
+.custom-img{
+    height:200px;
+    object-fit: cover;
+}
+.card-hover{
+    transition:transform 0.3s ease, box-shadow 0.3s ease ;
+}
+.card-hover:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.card-hover .custom-img{
+    transition:transform  0.3s ease;
+}
+.card-hover:hover .custom-img{
+    transform:scale(1.05);
+}
+.certainCol{
+    margin-bottom: 16px;
+}
