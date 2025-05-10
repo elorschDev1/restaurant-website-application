@@ -1,6 +1,10 @@
-import React,{useState} from 'react';
+import React,{useContext, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import PhoneInput from "react-phone-input-2";
+import {parsePhoneNumberFromString} from "libphonenumber-js";
 import 'react-phone-input-2/lib/style.css';
+import ContactSuccessToast from './ContactSuccessToast';
+import ToastContext from '../context/ToastContext';
 const ContactUs = () => {
   let [username,setUsername]=useState('');
   let [usernameError,setUserNameError]=useState('');
@@ -11,25 +15,30 @@ const ContactUs = () => {
   let [phoneValue,setPhoneValue]=useState('');
   let [phoneValueError,setPhoneValueError]=useState('');
   let [boxChecked,setBoxChecked]=useState(false);
+  let {triggerToast}=useContext(ToastContext);
+    let usernamePattern=/^[A-Za-z\s']+$/;
+  let emailPattern=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  let navigate=useNavigate();
   let handleSubmit=async (e)=>{
     e.preventDefault();
     let formIsValid=true;
     if(username===""){
       setUserNameError("Kindly fill in your name.");
       formIsValid=false;
-    }else if(username.length<3){
-      setUserNameError("Your name should not be less than 3 characters long.");
+    }
+    if(username!==""&&usernamePattern.test(username)===false){
+      setUserNameError("Kindly ensure the name you provide is valid.");
       formIsValid=false;
     }
     if(emailAddress===""){
       setEmailError("Kindly provide your email address.");
       formIsValid=false;
     
-    }else if(emailAddress.indexOf('@')<3){
-      setEmailError("Kindly ensure your email address is valid.");
+    }  
+    if(emailAddress!==""&&emailPattern.test(emailAddress)===false){
+      setEmailError("Kindly ensure the email address provided is valid.");
       formIsValid=false;
-    
-    }
+     }
     if(queryArea===""){
       setQueryAreaError("Kindly specify what you would like to know or if you have something you would like to discuss with us.");
       formIsValid=false;
@@ -42,7 +51,13 @@ const ContactUs = () => {
     if(phoneValue===""){
       setPhoneValueError("Kindly provide your phone number for contacting.");
       formIsValid=false;
-    }
+    }else{
+          const phoneNumber=parsePhoneNumberFromString("+" + phoneValue);
+          if(!phoneNumber||!phoneNumber.isValid()){
+            setPhoneValueError("Invalid phone number, ensure its in the correct format.");
+            formIsValid=false;
+          }
+         }
     if(formIsValid){
       const formData=new FormData();
       formData.append("username",username);
@@ -56,10 +71,22 @@ const ContactUs = () => {
       });
       let data= await res.json();
       console.log(data);
-    
-    }
-  
-    
+      if(data==="Data saved successfully"){
+       // alert(`Hi ${username}, your data has been successfully received and saved, we will contact you shortly.`);
+       triggerToast(`Hi ${username} your data has been successfully received and saved, we will contact you shortly.`);
+        setTimeout(()=>{
+          alert("Redirecting you to the homepage in a bit.")
+        },2000);
+       setTimeout(()=>{
+          setUsername("");
+          setEmailAddress("");
+          setPhoneValue("");
+          setQueryArea("");
+          if(boxChecked===true)setBoxChecked(false);
+          navigate("/");
+        },4000);
+      } 
+    }   
   }
   let handleNameChange=(e)=>{
     if(usernameError!=="")setUserNameError("");
@@ -109,12 +136,16 @@ const ContactUs = () => {
         <p>{queryAreaError}</p>
         </div>
         <div className="mb-3 p-2 d-flex flex-row">
-        <input type="checkbox" name="emailAcceptance" id="emailAcceptance" className="form-check-input" />
+        <input type="checkbox" name="emailAcceptance" id="emailAcceptance" className="form-check-input"  checked={boxChecked} onChange={()=>{
+          if(boxChecked===true)setBoxChecked(false);
+          if(boxChecked===false)setBoxChecked(true);
+        }}/>
         <label htmlFor="emailAcceptance" className="form-check-label">Notify Me About New Events </label>
         </div>
         <button type="submit" className=" btn bg-dark text-white">Submit</button>
        </form>
       <div id="messageArea" className='p-3 m-3'></div>
+      <ContactSuccessToast/>
      </section>
   )
 }
