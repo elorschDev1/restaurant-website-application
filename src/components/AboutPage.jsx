@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React from 'react';
 const AboutPage = () => {
   return (
   <section className='d-flex flex-column justify-content-center align-items-center p-3 m-3  text-center ' id="aboutPageSection">
@@ -11,8 +10,7 @@ const AboutPage = () => {
     <div>
     <h4>What You Can Expect:</h4>
     <ul className='list-group'>
-      
-      <li className='list-group-item list-group-item-warning'>Locally Sourced,Fresh Ingridients</li>
+       <li className='list-group-item list-group-item-warning'>Locally Sourced,Fresh Ingridients</li>
       <li className='list-group-item list-group-item-warning'>Authentic Kenyan & International Flavours</li>
       <li className='list-group-item list-group-item-warning'>Great Ambience for Friends & Family</li>
       <li className="list-group-item list-group-item-warning">Premium Grilled Stakes & Nyama Choma: Cooked to perfection over an open flame</li>
@@ -21,9 +19,7 @@ const AboutPage = () => {
       <li className="list-group-item list-group-item-warning">Fresh Ingridients, Bold Flavours-No shortcuts, just great taste!</li>
     </ul>
     </div>
-  
   </section>
   )
 }
-
 export default AboutPage

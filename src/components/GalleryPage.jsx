@@ -20,7 +20,6 @@ const GalleryPage = () => {
         </Card.Body>
       </Card>
       </Col>
-
       <Col  className='d-flex certainCol' md={4}>
       <Card className="w-100 card-hover">
         <Card.Img src='/Chill zone 3.jpg' variant='top' className='custom-img'/>
@@ -28,11 +27,7 @@ const GalleryPage = () => {
           <Card.Title>Poolside Paradise</Card.Title>
           <Card.Text>Dip,sip, and relax. Whether you're cooling off or catching vibes, our poolside spot is your perfect weekend getaway-right in the heart of Fedha</Card.Text>
         </Card.Body>
-
       </Card>
-      
-
-
       </Col>
       <Col  className='d-flex certainCol' md={4}>
       <Card className="w-100 card-hover">
@@ -41,12 +36,9 @@ const GalleryPage = () => {
           <Card.Title>Relaxation, the Kenyan Way</Card.Title>
           <Card.Text>Catch the breeze,kick back in comfort, and enjoy great company by the pool. No reservation needed- just good vibes</Card.Text>
         </Card.Body>
-
       </Card>
-
       </Col>
     </Row>
-
 <Row  className='p-4 m-3'>
   <Col className='d-flex certainCol' md={4}>
   <Card className='w-100 card-hover'>
@@ -129,7 +121,7 @@ const GalleryPage = () => {
     <Card.Img src='/Dad.jpg' variant='top' className='custom-img'/>
     <Card.Body className='d-flex flex-column'>
     <Card.Title>Meet the Visionary Behind Our Success</Card.Title>
-    <Card.Text>At the helm of our restaurant is Mister Edwin, the CEO and proud owner, whose dedication and passion for exceptional hospitality drive every aspect of our business. With years of experience and deep commitment to quality, Mr. Edwin has cultivated a space where guests feel like family and every dining experience is one to remember. His leadership and vision continue to insipire and shape our values of warmth, service and community.</Card.Text>
+    <Card.Text>At the helm of our restaurant is Mister Edwin, the CEO and proud owner, whose dedication and passion for exceptional hospitality drive every aspect of our business. With years of experience and deep commitment to quality, Mr. Edwin has cultivated a space where guests feel like family and every dining experience is one to remember. His leadership and vision continue to inspire and shape our values of warmth, service and community.</Card.Text>
     </Card.Body>
   </Card>
   </Col>
@@ -149,7 +141,7 @@ const GalleryPage = () => {
     <Card.Img src="/Trader.png" variant='top' className='custom-img'/>
     <Card.Body className='d-flex flex-column'>
       <Card.Title>Our Strategic Growth Partner</Card.Title>
-      <Card.Text>We are honoured to have Julian as a key contributor to our success. With expertise in online trading and a keen  eye for market trends, Julian has helped guide our restaurant through some of the most strategic decisions. By leveraging his skills in trading and business analysis, he's played a pivotal role in boosting our growth, andensuring a sound financial future for our restaurant. His innovative approach to business has opened new doors, creating opportunities for expansion and ensuring we stay ahead in a competitive market. </Card.Text>
+      <Card.Text>We are honoured to have Julian as a key contributor to our success. With expertise in online trading and a keen  eye for market trends, Julian has helped guide our restaurant through some of the most strategic decisions. By leveraging his skills in trading and business analysis, he's played a pivotal role in boosting our growth, and ensuring a sound financial future for our restaurant. His innovative approach to business has opened new doors, creating opportunities for expansion and ensuring we stay ahead in a competitive market. </Card.Text>
     </Card.Body>
   </Card>
   </Col>
@@ -160,15 +152,10 @@ const GalleryPage = () => {
     <Card.Title>The Visionary Behind The Success</Card.Title>
     <Card.Text>At the heart of our restaurant's digital growth is Edgar,a dedicated and talented full stack developer. With a passion for technology and a drive to push boundaries, Edgar has played an instumental role in shaping our online presence and streamlining operations. By combining both frontend and backend operations, Edgar has brought the restaurant's website to life, ensuring it runs smoothly and looks stunning for our guests. His efforts have not only made ordering and reservations easier for customers, but also contributed to our overall business growth. Through continuos innovation and a commitment to excellence, Edgar is driving us forward into a future where technology and hospitality meet seamlessly.</Card.Text>
     </Card.Body>
-   
-
   </Card>
   </Col>
-
 </Row>
-
   </section>
   )
 }
-
 export default GalleryPage

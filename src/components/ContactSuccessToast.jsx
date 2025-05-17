@@ -4,9 +4,8 @@ import ToastContext from '../context/ToastContext';
 const ContactSuccessToast = () => {
 let {show,setShow,message}=useContext(ToastContext);
   return (
- <ToastContainer className="position-fixed top-50 start-50 translate-middle p-3"
- style={{ zIndex: 9999 }} >
-  <Toast onClose={()=>setShow(false)} show={show} delay={5000} autohide bg='success'>
+ <ToastContainer className="position-fixed top-50 start-50 translate-middle p-3" style={{ zIndex: 9999 }} >
+  <Toast onClose={()=>setShow(false)} show={show} delay={2000} autohide bg='success'>
   <Toast.Header>
     <strong className="me-auto">Success</strong>
   </Toast.Header>
@@ -17,4 +16,4 @@ let {show,setShow,message}=useContext(ToastContext);
  </ToastContainer>
   )
 }
-export default ContactSuccessToast
+export default ContactSuccessToast;

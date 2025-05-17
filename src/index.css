@@ -56,3 +56,9 @@ iframe{
 .certainCol{
     margin-bottom: 16px;
 }
+nav{
+    background-color: orangered;
+}
+i{
+    font-size:5rem;
+}

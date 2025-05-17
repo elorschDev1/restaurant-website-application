@@ -32,8 +32,7 @@ const ContactUs = () => {
     }
     if(emailAddress===""){
       setEmailError("Kindly provide your email address.");
-      formIsValid=false;
-    
+      formIsValid=false; 
     }  
     if(emailAddress!==""&&emailPattern.test(emailAddress)===false){
       setEmailError("Kindly ensure the email address provided is valid.");
@@ -42,11 +41,9 @@ const ContactUs = () => {
     if(queryArea===""){
       setQueryAreaError("Kindly specify what you would like to know or if you have something you would like to discuss with us.");
       formIsValid=false;
-    
     }else if(queryArea.length>250){
       setQueryAreaError("Kindly ensure your message is not more than 200 words.");
-      formIsValid=false;
-    
+      formIsValid=false; 
     }
     if(phoneValue===""){
       setPhoneValueError("Kindly provide your phone number for contacting.");
@@ -72,7 +69,6 @@ const ContactUs = () => {
       let data= await res.json();
       console.log(data);
       if(data==="Data saved successfully"){
-       // alert(`Hi ${username}, your data has been successfully received and saved, we will contact you shortly.`);
        triggerToast(`Hi ${username} your data has been successfully received and saved, we will contact you shortly.`);
         setTimeout(()=>{
           alert("Redirecting you to the homepage in a bit.")
@@ -144,8 +140,10 @@ const ContactUs = () => {
         </div>
         <button type="submit" className=" btn bg-dark text-white">Submit</button>
        </form>
-      <div id="messageArea" className='p-3 m-3'></div>
-      <ContactSuccessToast/>
+      <div id="messageArea" className='p-3 m-3'>
+        <ContactSuccessToast/>
+      </div>
+      
      </section>
   )
 }
