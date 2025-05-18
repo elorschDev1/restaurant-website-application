@@ -1,5 +1,7 @@
 import React from 'react';
 import CheckOutForm from './CheckOutForm';
+import SearchBar from './SearchBar';
+import Menu from './Menu';
 
 const OrderOnline = () => {
   return (
@@ -8,6 +10,8 @@ const OrderOnline = () => {
       <h2 className="text-white">Craving something delicious? Order now and we'll handle the rest</h2>
      </div>
       <div>
+        <SearchBar/>
+        <Menu/>
         <CheckOutForm/>
       </div>
 
