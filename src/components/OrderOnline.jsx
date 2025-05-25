@@ -1,7 +1,5 @@
 import React from 'react';
-import CheckOutForm from './CheckOutForm';
-import SearchBar from './SearchBar';
-import Menu from './Menu';
+import { Link,Outlet } from 'react-router-dom';
 
 const OrderOnline = () => {
   return (
@@ -9,17 +7,10 @@ const OrderOnline = () => {
      <div className="d-flex flex-column p-2 m-2">
       <h2 className="text-white">Craving something delicious? Order now and we'll handle the rest</h2>
      </div>
-      <div>
-        <SearchBar/>
-        <Menu/>
-        <CheckOutForm/>
-      </div>
-
-
-
-
+         <div>
+              <Outlet/>
+              </div>
     </section>
   )
 }
-
 export default OrderOnline

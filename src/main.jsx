@@ -11,6 +11,10 @@ import GalleryPage from './components/GalleryPage.jsx';
 import TestimonialsPage from './components/TestimonialsPage.jsx';
 import ReservationsPage from './components/ReservationsPage.jsx';
 import LocationPage from './components/LocationPage.jsx';
+import Menu from './components/Menu.jsx';
+import CheckOutForm from './components/CheckOutForm.jsx';
+import Cart from './components/Cart.jsx';
+import SearchBar from './components/SearchBar.jsx';
 const router=createBrowserRouter([
   {
     path:"/",
@@ -42,7 +46,23 @@ const router=createBrowserRouter([
       },
       {
         path:"/orderonline",
-        element:<OrderOnline/>
+        element:<OrderOnline/>,
+        children:[
+          {
+            path:"/orderonline/menu",
+            element:<SearchBar/>
+          },
+          {
+            path:"/orderonline/checkout",
+            element:<CheckOutForm/>
+          },
+            {
+            path:"/orderonline/cart",
+            element:<Cart/>
+          },
+
+
+        ]
       },
       {
         path:"/reservations",

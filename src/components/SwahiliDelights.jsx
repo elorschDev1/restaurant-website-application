@@ -9,8 +9,8 @@ const SwahiliDelights = () => {
           <Card className="w-100 card-hover swahilidelight">
                 <Card.Img src='/swahilidelight1.jpg' variant='top' className='custom-img'/>
                 <Card.Body className='d-flex flex-column'>
-                  <Card.Title>Swahili Delight Edition</Card.Title>
-                  <Card.Text>A rich fusion of coastal flavours, the Swahili Delight brings together aromatic spices, tender meat, and coconut infused sauce over a bed of fragrant rice. Its a celebration of the Swahili coast - soulful,spicy and satisfying.</Card.Text>
+                  <Card.Title>Chapatti & Meat Stew</Card.Title>
+                  <Card.Text>A rich fusion of coastal flavours, this meal brings together aromatic spices, tender meat, and coconut infused sauce over a bed of fragrant rice. Its a celebration of the Swahili coast - soulful,spicy and satisfying.</Card.Text>
                   <Card.Text className="price">Ksh.180</Card.Text>
                <AddToCart/>
                 </Card.Body>
@@ -65,10 +65,10 @@ const SwahiliDelights = () => {
         </Col>
          <Col className="d-flex certainCol" md={4}>
           <Card className="w-100 card-hover">
-                <Card.Img src='/zoshua-colah-GcuY6DB-ysE-unsplash.jpg' variant='top' className='custom-img'/>
+                <Card.Img src='/anjera.jpg' variant='top' className='custom-img'/>
                 <Card.Body className='d-flex flex-column'>
                   <Card.Title>Anjera & Meat Stew</Card.Title>
-                  <Card.Text>Soft, spongy Ethiopian style Anjera served with slow-cooked spicy meat stew. The tangy flatbread soaks up all the flavours, making every mouthful deely satisfying and rich in heritage.</Card.Text>
+                  <Card.Text>Soft, spongy Ethiopian style Anjera served with slow-cooked spicy meat stew. The tangy flatbread soaks up all the flavours, making every mouthful deeply satisfying and rich in heritage.</Card.Text>
                  <Card.Text className="price">Ksh.230</Card.Text>
                  <AddToCart/>
                 </Card.Body>

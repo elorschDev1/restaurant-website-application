@@ -5,10 +5,12 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import React from 'react';
 import { Link,Outlet } from 'react-router-dom';
 import ToastProvider from './context/ToastProvider';
+import MealProvider from './context/MealProvider';
 
 const App = () => {
   return (
     <ToastProvider>
+        <MealProvider>
     <div>
         <nav className="navbar navbar-expand-lg navbar-dark">
             <div className="container">
@@ -32,8 +34,15 @@ const App = () => {
                         <li className="nav-item"><Link to="/location" className='nav-link text-white'>Our Location</Link></li>
                         <li className="nav-item"><Link to="/gallery" className='nav-link text-white'>View Our Gallery</Link></li>
                         <li className="nav-item"><Link to="/testimonials" className='nav-link text-white'>Testimonials</Link></li>
-                        <li className="nav-item"><Link to="/orderonline" className='nav-link text-white'>Order Online</Link></li>
-                        <li className="nav-item"><Link to="/reservations" className='nav-link text-white'>Make Reservations</Link></li>
+                        <li className="nav-item dropdown"><Link to="/orderonline" className='nav-link text-white dropdown-toggle'id="navbarDropdown" data-bs-toggle="dropdown" role='button' aria-expanded="false">Order Online</Link>
+                          <ul className="dropdown-menu bg-dark" aria-labelledby='navbarDropdown'>
+                            <li className="nav-item"><Link to="/orderonline/menu" className='nav-link text-white dropdown-item'>Menu</Link></li>
+                             <li className="nav-item"><Link to="/orderonline/checkout" className='nav-link text-white  dropdown-item'>Checkout</Link></li>
+                              <li className="nav-item"><Link to="/orderonline/cart" className='nav-link text-white dropdown-item'>Cart</Link></li>
+                         </ul> 
+                        </li>
+                       
+                         <li className="nav-item"><Link to="/reservations" className='nav-link text-white'>Make Reservations</Link></li>
                     </ul>
                 </div>
             </div>
@@ -41,6 +50,7 @@ const App = () => {
         <Outlet/>
       
     </div>
+    </MealProvider>
     </ToastProvider>
   )
 }
