@@ -6,11 +6,13 @@ import React from 'react';
 import { Link,Outlet } from 'react-router-dom';
 import ToastProvider from './context/ToastProvider';
 import MealProvider from './context/MealProvider';
+import SelectedMealsProvider from './context/SelectedMealsProvider';
 
 const App = () => {
   return (
     <ToastProvider>
         <MealProvider>
+            <SelectedMealsProvider>
     <div>
         <nav className="navbar navbar-expand-lg navbar-dark">
             <div className="container">
@@ -50,6 +52,7 @@ const App = () => {
         <Outlet/>
       
     </div>
+    </SelectedMealsProvider>
     </MealProvider>
     </ToastProvider>
   )

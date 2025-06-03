@@ -12,7 +12,7 @@ const GalleryPage = () => {
     </div>
     <Row className='p-4 m-3'>
       <Col  className='d-flex certainCol' md={4}>
-      <Card className="w-100 card-hover">
+      <Card className="w-100 card-hover" id='Chicken Drum Sticks'>
         <Card.Img src='/Chicken.jpg' variant='top' className='custom-img'/>
         <Card.Body className='d-flex flex-column'>
           <Card.Title>Nyama Fiesta-Drumstick Edition</Card.Title>
@@ -99,7 +99,7 @@ const GalleryPage = () => {
 </Row>
 <Row  className='p-4 m-3'>
   <Col className='d-flex certainCol' md={4}>
-  <Card className='w-100 card-hover'>
+  <Card className='w-100 card-hover'id="Chocolate Smoothie">
     <Card.Img src='/Ice-cream.jpg' variant='top' className='custom-img'/>
     <Card.Body className='d-flex flex-column'>
     <Card.Title>Indulgent Chocolate Bliss</Card.Title>
