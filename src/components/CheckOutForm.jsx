@@ -1,7 +1,11 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
+import { useNavigate } from 'react-router-dom';
 import PhoneInput from "react-phone-input-2";
 import {parsePhoneNumberFromString} from "libphonenumber-js";
 import 'react-phone-input-2/lib/style.css';
+import CartsFoodsContext from '../context/CartsFoodsContext';
+import ContactSuccessToast from './ContactSuccessToast';
+import ToastContext from '../context/ToastContext';
 const CheckOutForm = () => {
         let [username,setUsername]=useState('');
         let [usernameError,setUserNameError]=useState('');
@@ -17,6 +21,9 @@ const CheckOutForm = () => {
         let [boxChecked,setBoxChecked]=useState(false);
         let usernamePattern=/^[A-Za-z\s']+$/;
         let emailPattern=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        let {mealName,mealPrice,mealQuantity,totalMealPrice}=useContext(CartsFoodsContext);
+         let {triggerToast}=useContext(ToastContext);
+         let navigate=useNavigate();
     const handleSubmit=async (e)=>{
         e.preventDefault();
         let formIsValid=true;
@@ -58,17 +65,27 @@ const CheckOutForm = () => {
             console.log("form is valid.");
             const formData=new FormData();
             formData.append("name",username);
+            formData.append("phone",phoneValue);
             formData.append("email",emailAddress);
             formData.append("deliveryAddress",deliveryAddress);
             formData.append("instructions",deliveryInstructions);
             formData.append("paymentMethod",paymentMethod);
+            formData.append("meal",mealName);
+            formData.append("price",mealPrice);
+            formData.append("quantity",mealQuantity);
+            formData.append("totalprice",totalMealPrice);
             formData.append("saveInfo",boxChecked);
             let res=await fetch("http://localhost/restaurant_backend-app/onlineorders.php",{
                 method:"POST",
                 body:formData
             })
             let data=await res.json();
-            console.log(data);
+            //console.log(data);
+            triggerToast(data);
+            setTimeout(()=>{
+              navigate("/")
+            },2000);
+           //console.log(typeof data);
         }
 
     }
@@ -159,7 +176,23 @@ const CheckOutForm = () => {
         </label>
         <p>{paymentMethodError}</p>
     </div>
-    <div className="mb-3 p-3">
+     <div className="mb-3 p-3" style={{display:"none"}}>
+      <label htmlFor="mealName" className="form-label">Ordered Meal:</label>
+        <input type='text' name="mealName" id="mealName" className="form-control" value={mealName} readOnly />
+    </div>
+    <div className="mb-3 p-3" style={{display:"none"}}>
+      <label htmlFor="mealPrice" className="form-label">Price:</label>
+      <input type="number" name="mealPrice" id="mealPrice" className="form-control" value={mealPrice} readOnly />
+    </div>
+    <div className="mb-3 p-3" style={{display:"none"}}>
+    <label htmlFor="mealQuantity" className="form-label">Quantity:</label>
+    <input type="number" name="mealQuantity" id="mealQuantity" className="form-control"  value={mealQuantity} readOnly/>
+    </div>
+    <div className="mb-3 p-3" style={{display:"none"}}>
+      <label htmlFor="totalPrice" className="form-label">Total Price:</label>
+      <input type="number" name="totalPrice" id="totalPrice" className="form-control" value={totalMealPrice} readOnly/>
+    </div>
+    <div className="mb-3 p-3" >
         <label htmlFor="savedetails" className="form-check-label">
             <input type="checkbox" name="savedetails" id="savedetails" className="form-check-input" checked={boxChecked} onChange={()=>{
                 if(boxChecked===false)setBoxChecked(true);
@@ -170,6 +203,7 @@ const CheckOutForm = () => {
     <div className="mb-3 p-3">
         <button className="btn bg-dark text-white" type='submit'>Submit</button>
     </div>
+   <ContactSuccessToast/>
    </form>
   )
 }

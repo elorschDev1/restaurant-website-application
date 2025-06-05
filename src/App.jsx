@@ -7,9 +7,10 @@ import { Link,Outlet } from 'react-router-dom';
 import ToastProvider from './context/ToastProvider';
 import MealProvider from './context/MealProvider';
 import SelectedMealsProvider from './context/SelectedMealsProvider';
-
+import CartsFoodProvider from './context/CartsFoodProvider';
 const App = () => {
   return (
+    <CartsFoodProvider>
     <ToastProvider>
         <MealProvider>
             <SelectedMealsProvider>
@@ -39,7 +40,7 @@ const App = () => {
                         <li className="nav-item dropdown"><Link to="/orderonline" className='nav-link text-white dropdown-toggle'id="navbarDropdown" data-bs-toggle="dropdown" role='button' aria-expanded="false">Order Online</Link>
                           <ul className="dropdown-menu bg-dark" aria-labelledby='navbarDropdown'>
                             <li className="nav-item"><Link to="/orderonline/menu" className='nav-link text-white dropdown-item'>Menu</Link></li>
-                             <li className="nav-item"><Link to="/orderonline/checkout" className='nav-link text-white  dropdown-item'>Checkout</Link></li>
+                             <li className="nav-item" style={{display:"none"}}><Link to="/orderonline/checkout" className='nav-link text-white  dropdown-item'>Checkout</Link></li>
                               <li className="nav-item"><Link to="/orderonline/cart" className='nav-link text-white dropdown-item'>Cart</Link></li>
                          </ul> 
                         </li>
@@ -55,7 +56,7 @@ const App = () => {
     </SelectedMealsProvider>
     </MealProvider>
     </ToastProvider>
+    </CartsFoodProvider>
   )
 }
-
 export default App
